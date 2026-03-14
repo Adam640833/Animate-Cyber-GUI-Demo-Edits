@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Animate MVP Styler
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Change how a website looks when you show it
 // @author       You
 // @match        https://45.33.103.236/animatemvp*
@@ -30,14 +30,24 @@
     `;
     document.head.appendChild(style);
 
-    // --- OPTION B: Run after page loads (for DOM changes) ---
-    function applyChanges() {
-        // Example: hide an element by selector
-        // document.querySelector('.annoying-banner')?.remove();
+    // --- Replace "Animate" with "Animate Cyber" on login/page ---
+    function replaceAnimateWithAnimateCyber(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            if (node.textContent.includes('Animate')) {
+                node.textContent = node.textContent.replace(/\bAnimate\b/g, 'Animate Cyber');
+            }
+        } else {
+            node.childNodes.forEach(replaceAnimateWithAnimateCyber);
+        }
+    }
 
-        // Example: change text
-        // const el = document.querySelector('h1');
-        // if (el) el.textContent = 'My custom title';
+    function applyChanges() {
+        // Page title
+        if (document.title && document.title.includes('Animate')) {
+            document.title = document.title.replace(/\bAnimate\b/g, 'Animate Cyber');
+        }
+        // All text on the page (login and elsewhere)
+        replaceAnimateWithAnimateCyber(document.body);
     }
 
     if (document.readyState === 'loading') {
