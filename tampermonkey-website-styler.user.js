@@ -4,8 +4,8 @@
 // @version      1.0
 // @description  Change how a website looks when you show it
 // @author       You
-// @match        https://45.33.103.236/animatemvp*
-// @match        http://45.33.103.236/animatemvp*
+// @match        https://45.33.103.236/animatemvp/*
+// @match        http://45.33.103.236/animatemvp/*
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/Adam640833/Animate-Cyber-GUI-Demo-Edits/main/tampermonkey-website-styler.user.js
 // @downloadURL  https://raw.githubusercontent.com/Adam640833/Animate-Cyber-GUI-Demo-Edits/main/tampermonkey-website-styler.user.js
